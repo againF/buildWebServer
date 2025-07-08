@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "build:yup": "rollup node_modules/yup -o src/moulds/yup.js -p @rollup/plugin-node-resolve,@rollup/plugin-commonjs,rollup-plugin-terser -f umd -n 'yup'"
   },
   "repository": "git@github.com:againF/buildWebServer.git",
   "author": "Wu YeFei <wyffcld@163.com>",
@@ -11,5 +12,11 @@
   "dependencies": {
     "express": "^5.1.0",
     "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "rollup": "^4.44.2",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
