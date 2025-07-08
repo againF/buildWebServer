@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "build:yup": "rollup node_modules/yup -o src/moulds/yup.js -p @rollup/plugin-node-resolve,@rollup/plugin-commonjs,rollup-plugin-terser -f umd -n 'yup'"
+    "build:yup": "rollup node_modules/yup -o src/moulds/yup.js -p @rollup/plugin-node-resolve,@rollup/plugin-commonjs,rollup-plugin-terser -f umd -n yup"
   },
   "repository": "git@github.com:againF/buildWebServer.git",
   "author": "Wu YeFei <wyffcld@163.com>",
