@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <div id="app"></div>
+    <script type="module">
+        import {refreshShopList,bindShopInfoEvents} from './index.js'
+
+        async function init(){
+            await refreshShopList();
+            await bindShopInfoEvents();
+        }
+
+        init()
+    </script>
 </body>
 </html>

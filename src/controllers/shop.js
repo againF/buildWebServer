@@ -64,7 +64,7 @@ class ShopController {
             res.status(404)
         }
         res.send({
-            success
+            success:true
         })
     }
 }
