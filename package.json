@@ -9,6 +9,7 @@
   "author": "Wu YeFei <wyffcld@163.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "yup": "^1.6.1"
   }
 }
