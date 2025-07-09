@@ -15,7 +15,15 @@ if (config.use_env_variable) {
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
-
+async function testConnection() {
+  try {
+    await sequelize.authenticate();
+    console.log('数据库连接测试：Connection has been established successfully.');
+  } catch (error) {
+    console.error('数据库连接测试：Unable to connect to the database:', error);
+  }
+}
+testConnection();
 fs
   .readdirSync(__dirname)
   .filter(file => {
