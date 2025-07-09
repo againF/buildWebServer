@@ -18,4 +18,12 @@ async function bootstrap() {
     console.log(`Server is running at http://localhost:${port}`)
 }
 
+/*
+监听未捕获的Promise异常,直接退出进程
+*/
+process.on('unhandledRejection', (err) => {
+    console.error('未捕获的Promise异常:', err);
+    process.exit(1);
+});
+
 bootstrap()

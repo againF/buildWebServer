@@ -1,5 +1,5 @@
 const { Router } = require('express');
-
+const cc = require('../utils/cc')
 const ASYNC_MS = 1000;
 // 用于注入异常的接口以提供初级的混沌工程入口
 /*
@@ -22,6 +22,7 @@ class ChaosController {
         router.get('/thunk-error-throw', this.getThunkErrorThrow)
         router.get('/promise-error-handle', this.getPromiseErrorHandle)
         router.get('/promise-error-throw', this.getPromiseErrorThrow)
+        router.get('/promise-error-throw-with-catch', this.getPromiseErrorThrowWithCatch)
         return router;
     }
 
@@ -97,10 +98,8 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
         Error: Chaos test - promise error Handle
     at getPromiseErrorHandle (C:\learn\node\learnBuildWebServer\src\controllers\chaos.js:97:14)
         */
-        await new Promise((resolve) => {
-            setTimeout(() => {
-                resolve()
-            }, ASYNC_MS);
+        await new Promise((r) => {
+            setTimeout(r, ASYNC_MS);
         })
         next(new Error('Chaos test - promise error Handle'))
     }
@@ -110,13 +109,16 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
         Error: Chaos test - promise error Throw
     at getPromiseErrorThrow (C:\learn\node\learnBuildWebServer\src\controllers\chaos.js:106:15)
         */
-        await new Promise((resolve) => {
-            setTimeout(() => {
-                resolve()
-            }, ASYNC_MS);
+        await new Promise((r) => {
+            setTimeout(r, ASYNC_MS);
         })
         throw new Error('Chaos test - promise error Throw')
     }
+
+    getPromiseErrorThrowWithCatch = cc(async (req,res,next)=>{
+        await new Promise((r)=> setTimeout(r,ASYNC_MS))
+        throw new Error('Chaos test - promise error Throw with Catch')
+    })
 }
 
 module.exports = async () => {
